@@ -7,3 +7,12 @@ def to_binary(x):
     
     return to_binary(x // 2) + str(x % 2)
 
+
+def to_octal(x):
+    if x < 0:
+        raise ValueError("x has to be greater than or equal to 0")
+
+    if x < 8:
+        return str(x)
+    
+    return to_octal(x // 8) + str(x % 8)
