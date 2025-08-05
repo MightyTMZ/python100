@@ -21,3 +21,8 @@ test_to_octal_array = [
 @pytest.mark.parametrize("num, oct", test_to_octal_array)
 def test_to_octal(num, oct):
     assert to_octal(num) == oct
+
+
+def test_to_octal_negative():
+    with pytest.raises(ValueError, match="x has to be greater than or equal to 0"):
+        to_octal(-1)
