@@ -1,15 +1,14 @@
-def calc_checksum(string):
+def calc_checksum(digits):
 
-    total = 0
+    if not digits.isdigit():
+        raise ValueError("illegal chars: not only digits")
 
-    if len(string) == 1:
-        return int(string)
+    crc = 0
+    # print(enumerate(digits)) # doesn't show contents
+    # print(list(enumerate(digits))) # does show contents
 
-    for x in range(1, len(string) + 1):
-        total += x * int(string[x - 1])
+    for i, current_char in enumerate(digits):
+        value = (int(current_char)) * (i + 1)
+        crc += value
 
-    return total % 10
-
-
-print(calc_checksum("11111"))  # 5
-print(calc_checksum("87654321"))  # 0
+    return int(crc % 10)
