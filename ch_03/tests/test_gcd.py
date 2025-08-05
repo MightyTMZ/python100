@@ -1,4 +1,4 @@
-from ..gcd_recursive import gcd, gcd_iterative
+from ..gcd import gcd, gcd_iterative
 import pytest
 
 
