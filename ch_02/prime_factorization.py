@@ -1,4 +1,4 @@
-# Helper method
+# Helper methods
 def is_prime(number):
     x = 2
 
@@ -11,12 +11,30 @@ def is_prime(number):
         x += 1
     return True
 
+def calc_primes_up_to(max_value):
+    if max_value < 2:
+        return []
+            
+    n  = 2
+    primes = []
 
-def calc_prime_factors(value):
-    if is_prime(value):
-        return value
+    while n <= max_value:
+        if is_prime(n):
+            primes.append(n)
+        n += 1
     
-    if value % 2 == 0:
-        return calc_prime_factors(value / 2)
-    elif value % 2 == 1:
-        return calc_prime_factors
+    return primes
+
+# Solution
+def calc_prime_factors(value):
+    all_primes = calc_primes_up_to(value)
+    prime_factors = []
+
+    remaining_value = value
+    while remaining_value > 1:
+        for current_prime in all_primes:
+            while remaining_value % current_prime == 0:
+                remaining_value = remaining_value // current_prime
+                prime_factors.append(current_prime)
+    
+    return prime_factors
